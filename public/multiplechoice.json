@@ -1,0 +1,102 @@
+[
+    {
+        "question": "What is crucial in decentralized systems?",
+        "choices": [
+            "A. Centralized identity management",
+            "B. Identity ownership",
+            "C. Passwords",
+            "D. Third-party verification"
+        ],
+        "correctAnswer": "B"
+    },
+    {
+        "question": "Which of the following is considered more secure by some people?",
+        "choices": [
+            "A. Decentralized identity management",
+            "B. Centralized identity management",
+            "C. Cryptographic keys",
+            "D. Identity credentials"
+        ],
+        "correctAnswer": "B"
+    },
+    {
+        "question": "What should you regularly verify before interacting with services online?",
+        "choices": [
+            "A. Your digital identity",
+            "B. Your passwords",
+            "C. Your cryptographic keys",
+            "D. Your identity credentials"
+        ],
+        "correctAnswer": "A"
+    },
+    {
+        "question": "What is important for managing your identity?",
+        "choices": [
+            "A. Passwords alone",
+            "B. Cryptographic keys",
+            "C. Third-party verification",
+            "D. Centralized storage"
+        ],
+        "correctAnswer": "B"
+    },
+    {
+        "question": "What is a risk when relying solely on third parties for identity verification?",
+        "choices": [
+            "A. They are always trustworthy",
+            "B. They may not be reliable",
+            "C. They provide cryptographic proofs",
+            "D. They manage identity credentials"
+        ],
+        "correctAnswer": "B"
+    },
+    {
+        "question": "What should you actively manage across multiple devices?",
+        "choices": [
+            "A. Your passwords",
+            "B. Your identity credentials",
+            "C. Your cryptographic keys",
+            "D. Your digital identity"
+        ],
+        "correctAnswer": "B"
+    },
+    {
+        "question": "What is crucial for identity assertions?",
+        "choices": [
+            "A. Passwords",
+            "B. Centralized storage",
+            "C. Cryptographic proofs",
+            "D. Third-party verification"
+        ],
+        "correctAnswer": "C"
+    },
+    {
+        "question": "How should your identity data be securely stored?",
+        "choices": [
+            "A. In centralized locations",
+            "B. Using decentralized methods",
+            "C. In easily accessible places",
+            "D. With third-party verification"
+        ],
+        "correctAnswer": "B"
+    },
+    {
+        "question": "What is important to be able to do with identity credentials?",
+        "choices": [
+            "A. Store them centrally",
+            "B. Make them non-revocable",
+            "C. Revoke them",
+            "D. Verify them with third parties"
+        ],
+        "correctAnswer": "C"
+    },
+    {
+        "question": "What should you regularly audit?",
+        "choices": [
+            "A. Your passwords",
+            "B. Your digital identity and associated credentials",
+            "C. Your cryptographic keys",
+            "D. Your centralized storage"
+        ],
+        "correctAnswer": "B"
+    }
+]
