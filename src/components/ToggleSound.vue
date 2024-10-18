@@ -44,7 +44,7 @@ button.toggleSound {
     background-color: var(--financial-color);
     cursor: pointer;
     /*font-size: 30px;*/
-    color: brown;
+    color: #222;
     position: fixed;
     top: 0.1em;
     right: 0.1em;
