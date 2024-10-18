@@ -41,12 +41,7 @@
     <Results ref="refResults" />
     <MultipleChoiceModal />
     <!-- <p class="fs-5 text-center">awareness</p> -->
-    <button @click="sendEmailWithResults(resultsFromLocalStorage)">Send Email</button>
-    <div v-if="emailFallbackVisible">
-      <p>Copy the following email content:</p>
-      <textarea v-model="emailContent" readonly></textarea>
-      <button @click="copyToClipboard">Copy to Clipboard</button>
-    </div>
+     <!-- <SendResults /> -->
   </div>
 </template>
 
@@ -62,6 +57,7 @@ import ToggleSound from './components/ToggleSound.vue';
 import Results from './components/Results.vue';
 import OffCanvas from './components/OffCanvas.vue';
 import VueSpeedometer from "vue-speedometer"
+// import SendResults from './components/SendResults.vue';
 
 import myConfig from '../myConfig';
 import { useMainStore } from './stores/mainStore.js'
@@ -86,9 +82,6 @@ const score = computed(() => {
   const currentScore = +store.score;
   return currentScore;
 });
-
-import { useResults } from '@/composables/useResults';
-const { resultsFromLocalStorage, loadResults } = useResults();
 
 const percentage = computed(() => {
   const totalPoints = totalAvailablePoints.value;
@@ -144,44 +137,4 @@ watch(() => store.shouldNewStatementShow, (newValue, oldValue) => {
     }
   }
 });
-
-// Reactive state variables
-const emailFallbackVisible = ref(false);
-const emailContent = ref('');
-
-const sendEmailWithResults = (results) => {
-  const subject = encodeURIComponent('Quiz Results');
-  const body = encodeURIComponent(`Here are the results: ${results}`);
-  const mailtoLink = `mailto:kor@dwarshuis.com?subject=${subject}&body=${body}`;
-
-  try {
-    window.location.href = mailtoLink;
-  } catch (e) {
-    emailContent.value = `Subject: Quiz Results\n\nHere are the results: ${results}`;
-    emailFallbackVisible.value = true;
-  }
-};
-
-const copyToClipboard = () => {
-  navigator.clipboard.writeText(emailContent.value).then(() => {
-    alert('Email content copied to clipboard');
-  });
-};
-
-watch(() => store.allMultipleChoiceAnswered, (newValue) => {
-  if (newValue) {
-    loadResults();
-    console.log(resultsFromLocalStorage.value);
-    sendEmailWithResults(resultsFromLocalStorage.value);
-
-  }
-});
-
-
-const resetStatementsAndMultipleChoice = () => {
-  store.setStatementChosen(false);
-  store.setMultipleChoiceAnswerChosen(false);
-  store.setAllStatementsChosen(false);
-  store.setAllMultipleChoiceAnswered(false);
-};
 </script>
