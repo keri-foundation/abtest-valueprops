@@ -118,8 +118,8 @@ const showNewStatement = () => {
 };
 
 const showResults = () => {
-  if (refResults.value && typeof refResults.value.loadResults === 'function') {
-    refResults.value.loadResults();
+  if (refResults.value && typeof refResults.value.showResults === 'function') {
+    refResults.value.showResults();
   }
 };
 
@@ -135,6 +135,13 @@ watch(() => store.shouldNewStatementShow, (newValue, oldValue) => {
     }
   }
 });
+
+watch(() => store.allMultipleChoiceAnswered, (newValue) => {
+  if (newValue) {
+    console.log("All multiple choice answered korkorkor");
+  }
+});
+
 
 const resetStatementsAndMultipleChoice = () => {
   store.setStatementChosen(false);

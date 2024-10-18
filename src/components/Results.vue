@@ -21,6 +21,7 @@
 import { ref } from 'vue';
 import { Modal } from 'bootstrap';
 import { useMainStore } from '../stores/mainStore.js';
+import { useResults } from '../composables/useResults';
 
 let modal;
 const resultsFromLocalStorageModal = ref(null);
@@ -29,18 +30,19 @@ const hideModal = () => {
 };
 
 const store = useMainStore();
-const resultsFromLocalStorage = ref('');
+const { resultsFromLocalStorage, loadResults } = useResults();
 
-const loadResults = () => {
-    const results = store.loadResults();
-    resultsFromLocalStorage.value = results === null ? 'No results yet' : results;
+const showResults = () => {
+    loadResults();
     modal = new Modal(resultsFromLocalStorageModal.value);
     setTimeout(() => {
         modal.show();
     }, 1);
+
 };
+
 defineExpose({
-    loadResults
+    showResults
 });
 </script>
 
