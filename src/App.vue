@@ -35,7 +35,7 @@
         ]' />
     </div>
     <OpeningScreen />
-    <Conclusion />
+    <!-- <Conclusion /> -->
     <ToggleSound />
     <OffCanvas @call-show-results="showResults" />
     <Results ref="refResults" />
@@ -50,7 +50,7 @@
 import { ref, computed, watch } from 'vue';
 import CylinderLock from './components/CylinderLock.vue'
 import OpeningScreen from './components/OpeningScreen.vue';
-import Conclusion from './components/Conclusion.vue'
+// import Conclusion from './components/Conclusion.vue'
 import Statements from './components/Statements.vue';
 import MultipleChoiceModal from './components/MultipleChoiceModal.vue';
 import ToggleSound from './components/ToggleSound.vue';
