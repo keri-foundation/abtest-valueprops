@@ -1,27 +1,11 @@
 <template>
-    <div>
-        <div class="modal fade" ref="conclusionModal" tabindex="-1" aria-labelledby="conclusionModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-fullscreen" role="document">
-                <div class="modal-content conclusionmodal">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="conclusionModalLabel">Your profile</h5>
-                    </div>
-                    <div class="modal-body">
-                        <p v-html="finalText()"></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" @click="hideModal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <p v-if="allMultipleChoiceAnswered" v-html="finalText()"></p>
 </template>
 
 <script>
 import { Modal } from 'bootstrap';
 import { useMainStore } from '../stores/mainStore.js';
-import { ref, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useEvaluation } from '@/composables/useEvaluation';
 
 
@@ -31,6 +15,7 @@ export default {
     setup() {
         const store = useMainStore();
         const conclusionModal = ref(null);
+        const allMultipleChoiceAnswered = computed(() => store.allMultipleChoiceAnswered);
 
         const hideModal = () => {
             modal.hide();
@@ -59,22 +44,23 @@ export default {
                 typeOfPerson = evaluation.value[1];
             }
 
-            return typeOfPerson;
+            return "You are: " + typeOfPerson;
         };
 
-        watch(() => store.allMultipleChoiceAnswered, (newValue) => {
-            if (newValue) {
-                modal = new Modal(conclusionModal.value);
-                setTimeout(() => {
-                    modal.show();
-                }, 1000);
-            }
-        });
+        // watch(() => store.allMultipleChoiceAnswered, (newValue) => {
+        //     if (newValue) {
+        //         modal = new Modal(conclusionModal.value);
+        //         setTimeout(() => {
+        //             modal.show();
+        //         }, 1000);
+        //     }
+        // });
 
         return {
             conclusionModal,
             hideModal,
-            finalText
+            finalText,
+            allMultipleChoiceAnswered
         };
     }
 };
