@@ -3,8 +3,6 @@
     <div v-for="(item, index) in 10" :key="index" class="lock-cylinder" :data-id="index + 1" ref="cylinders">
     </div>
   </div>
-  <div class="nr-of-tasks-to-go text-center">Questions to go:<span class="nr-of-tasks-to-go-nr">{{ nrTasksToGo }}</span>
-  </div>
   <div class="knob-container" ref="knobContainer">
     <div class="knob" ref="knob">
       <div class="knob-center"></div> <!-- Vault knob center -->
@@ -12,6 +10,9 @@
   </div>
 
   <div class="key" ref="key"></div>
+  <div class="nr-of-tasks-to-go text-center">Questions to go:<span class="nr-of-tasks-to-go-nr">{{ nrTasksToGo }}</span>
+  </div>
+  <Conclusion />
 </template>
 
 <script setup>
@@ -22,6 +23,8 @@ const { lockSound, keySound } = useSounds();
 import { ref, onMounted, computed } from 'vue';
 import { useMainStore } from '../stores/mainStore.js'
 import myConfig from '../../myConfig.js';
+
+import Conclusion from './Conclusion.vue'
 
 const cylinders = ref([]);
 const knob = ref(null);
