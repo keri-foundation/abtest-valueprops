@@ -125,7 +125,7 @@ export default {
                 pickRandomQuestion();
                 setTimeout(() => {
                     modal.show();
-                }, 1000);
+                }, 300);
             }
         );
 
