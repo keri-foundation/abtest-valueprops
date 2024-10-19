@@ -9,32 +9,27 @@
             <button @click="showResults" type="button" class="btn btn-outline-primary d-inline-block btn-sm mb-5">Show
                 results</button>
             <SendResults />
+            <SendComments />
             <hr>
             <p>After you click START, you will be shown two statements each time. Choose the statement that fits you
                 best.</p>
 
             <p>After that, you will get a multiple-choice question. If all <span class="number-of-tasks">{{
-                    myConfig.nrOfTasksToBeDone }}</span> sets have been answered times, you will be shown the results.
+                myConfig.nrOfTasksToBeDone }}</span> sets have been answered times, you will be shown the results.
             </p>
             <hr>
         </div>
-
-
-
     </div>
     <button class="btn btn-outline-secondary settings" type="button" data-bs-toggle="offcanvas"
         data-bs-target="#offcanvas" aria-controls="offcanvas">
         <font-awesome-icon :icon="['fas', 'bars']" /> <!-- Hamburger menu icon -->
     </button>
-
-
-
-
 </template>
 
 <script setup>
 import InfoBar from './InfoBar.vue';
 import SendResults from './SendResults.vue';
+import SendComments from './SendComments.vue';
 import { Offcanvas } from 'bootstrap';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
