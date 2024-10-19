@@ -112,7 +112,7 @@ onMounted(() => {
 
 const showNewStatement = () => {
   if (refStatements.value && typeof refStatements.value.showNewStatement === 'function') {
-    const wait = refCylinderLock.value.startFullAnimationDuringRandomLength();
+    const wait = refCylinderLock.value.startFullAnimationDuringRandomLength() - 300;
     setTimeout(() => {
       refStatements.value.showNewStatement();
     }, wait);
