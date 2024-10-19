@@ -70,7 +70,7 @@ const showNewStatement = () => {
     setTimeout(() => {
         store.setSlideInClassOnStatements(true);
         store.setInactiveClassOnStatements(false);
-    }, 200);
+    }, 0);
 };
 
 const createRandomStatementPair = () => {
