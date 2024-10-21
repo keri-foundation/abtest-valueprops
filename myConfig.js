@@ -7,7 +7,8 @@ const myConfig = {
   nrOfTasksToBeDone: 5,
   lockAnimationMinimalSeconds: 1,
   lockAnimationMaximalSeconds: 3,
-  cylinderLockSpeed: 150
+  cylinderLockSpeed: 150,
+  localStorageKey: 'keri-questionaire-results',
 } 
 
 export default myConfig;
