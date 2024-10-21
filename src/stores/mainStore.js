@@ -49,12 +49,13 @@ export const useMainStore = defineStore('main', {
         },
         setAllMultipleChoiceAnswered(bool) {
             this.allMultipleChoiceAnswered = bool;
-        },        
+        },
+        emptyResultsInLocalStorage() {
+            localStorage.setItem(myConfig.localStorageKey, "");
+        },
         addToResultsInLocalStorage(val) {
             this.results += val + '\n';
             const textToWrite = this.results + '\n' + this.score;
-            
-            
             localStorage.setItem(myConfig.localStorageKey, JSON.stringify(textToWrite));
         },
         loadResults() {
