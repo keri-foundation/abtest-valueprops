@@ -5,6 +5,7 @@ import keySoundFile from '@/assets/audio/390328__lightnessko__door-unlocking-wit
 import lockSoundFile from '@/assets/audio/lock.mp3';
 import resetSoundFile from '@/assets/audio/360329__inspectorj__camera-shutter-fast-a.mp3';
 import wooshSoundFile from '@/assets/audio/woosh.mp3';
+import electricSoundFile from '@/assets/audio/34168__glaneur-de-sons__electric_wire_01.mp3';
 
 export function useSounds() {
     const clickSound = new Howl({
@@ -32,11 +33,17 @@ export function useSounds() {
         preload: true
     });
 
+    const electricSound = new Howl({
+        src: [electricSoundFile],
+        preload: true
+    });
+
     return {
         clickSound,
         keySound,
         lockSound,
         resetSound,
-        wooshSound
+        wooshSound,
+        electricSound
     };
 }
