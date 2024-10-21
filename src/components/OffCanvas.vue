@@ -6,13 +6,11 @@
         </div>
         <div class="offcanvas-body">
             <InfoBar />
-            <button @click="showResults" type="button" class="btn btn-outline-primary d-inline-block btn-sm mb-5">Show
-                results</button>
+            <button @click="showResults" type="button" class="btn btn-outline-primary d-inline-block btn-sm mb-5">Show results</button>
             <SendResults />
             <SendComments />
             <hr>
-            <p>After you click START, you will be shown two statements each time. Choose the statement that fits you
-                best.</p>
+            <p>After you click START, you will be shown two statements each time. Choose the statement that fits you best.</p>
 
             <p>After that, you will get a multiple-choice question. If all <span class="number-of-tasks">{{
                 myConfig.nrOfTasksToBeDone }}</span> sets have been answered times, you will be shown the results.
