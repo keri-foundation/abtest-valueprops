@@ -17,7 +17,7 @@ const allMultipleChoiceAnswered = computed(() => store.allMultipleChoiceAnswered
 
 const submitComment = () => {
     console.log('Comment submitted');
-    store.addToResults("Comments: " + comments.value);
+    store.addToResultsInLocalStorage("Comments: " + comments.value);
     comments.value = ''; // Clear the textarea after submission
 }
 </script>

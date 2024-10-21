@@ -100,14 +100,14 @@ const chooseStatement = (event) => {
 
 const chooseLeftStatement = () => {
     store.setContentOfChosenStatement(leftStatement.value);
-    store.addToResults('<hr>Chosen statement: ' + leftStatement.value + '<br>');
+    store.addToResultsInLocalStorage('<hr>Chosen statement: ' + leftStatement.value + '<br>');
     store.incrementScore(leftStatementScore.value);
     chooseStatement();
 };
 
 const chooseRightStatement = () => {
     store.setContentOfChosenStatement(rightStatement.value);
-    store.addToResults('Chosen statement: ' + rightStatement.value + '<br>');
+    store.addToResultsInLocalStorage('Chosen statement: ' + rightStatement.value + '<br>');
     store.incrementScore(rightStatementScore.value);
     chooseStatement();
 }

@@ -49,8 +49,8 @@ export const useMainStore = defineStore('main', {
         },
         setAllMultipleChoiceAnswered(bool) {
             this.allMultipleChoiceAnswered = bool;
-        },
-        addToResults(val) {
+        },        
+        addToResultsInLocalStorage(val) {
             this.results += val + '\n';
             const textToWrite = this.results + '\n' + this.score;
             

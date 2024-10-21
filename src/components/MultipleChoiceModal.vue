@@ -59,7 +59,7 @@ export default {
         const processChoice = () => {
             const chosenDomElement = document.querySelector('.correctAnswer');
             if (chosenDomElement) {
-                store.addToResults('Chosen Multiple Choice Answer: ' + chosenDomElement.textContent + '<br><hr>');
+                store.addToResultsInLocalStorage('Chosen Multiple Choice Answer: ' + chosenDomElement.textContent + '<br><hr>');
                 modal.hide();
 
                 store.setMultipleChoiceAnswerChosen(true);
