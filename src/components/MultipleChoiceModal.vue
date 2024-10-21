@@ -33,6 +33,9 @@ import { ref, onMounted, watch, computed } from 'vue';
 import { Modal } from 'bootstrap';
 import { useMainStore } from '../stores/mainStore.js';
 import myConfig from '../../myConfig';
+import { useSounds } from '@/composables/useSounds';
+const { electricSound } = useSounds();
+
 const baseUrl = import.meta.env.BASE_URL;
 
 export default {
@@ -46,7 +49,6 @@ export default {
         const correspondingAnswers = ref([]);
         const store = useMainStore();
         const contentOfChosenStatement = computed(() => store.contentOfChosenStatement);
-
         const resetInputs = () => {
             const inputs = document.querySelectorAll('.miniquiz input[type="radio"]');
             inputs.forEach(input => {
@@ -121,10 +123,16 @@ export default {
         watch(
             () => contentOfChosenStatement.value,
             (newVal, oldVal) => {
-                modal = new Modal(multipleChoiceModal.value);
+                modal = new Modal(multipleChoiceModal.value, {
+                    backdrop: 'static',
+                    keyboard: false
+                });
                 pickRandomQuestion();
                 setTimeout(() => {
                     modal.show();
+                    setTimeout(() => {
+                        electricSound.play();
+                    }, 100);
                 }, 300);
             }
         );
