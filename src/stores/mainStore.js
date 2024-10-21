@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import myConfig from '../../myConfig.js';
 
 export const useMainStore = defineStore('main', {
     state: () => ({
@@ -51,10 +52,13 @@ export const useMainStore = defineStore('main', {
         },
         addToResults(val) {
             this.results += val + '\n';
-            localStorage.setItem('keri-questionaire-results', JSON.stringify(this.results));
+            const textToWrite = this.results + '\n' + this.score;
+            
+            
+            localStorage.setItem(myConfig.localStorageKey, JSON.stringify(textToWrite));
         },
         loadResults() {
-            return JSON.parse(localStorage.getItem('keri-questionaire-results'));
+            return JSON.parse(localStorage.getItem(myConfig.localStorageKey));
         },
         resetStatementsAndMultipleChoice() {
             this.setStatementChosen(false);
