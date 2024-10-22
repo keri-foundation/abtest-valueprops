@@ -5,7 +5,10 @@ on:
     branches:
       - main  # Change 'main' to your default branch if it's not 'main'
   workflow_dispatch:  # Allows the workflow to be manually triggered
-  
+
+permissions:
+  contents: write  # Grant write permissions to the GITHUB_TOKEN
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
