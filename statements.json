@@ -1,0 +1,132 @@
+[
+    {
+        "entry": 1,
+        "statements": [
+            {
+                "statement": "You understand that identity ownership is crucial in decentralized systems.",
+                "score": 99
+            },
+            {
+                "statement": "You believe centralized identity management is more secure than decentralized approaches.",
+                "score": 15
+            }
+        ]
+    },
+    {
+        "entry": 2,
+        "statements": [
+            {
+                "statement": "You regularly verify your digital identity before interacting with services online.",
+                "score": 90
+            },
+            {
+                "statement": "You think it's unnecessary to verify your identity when transacting online.",
+                "score": 5
+            }
+        ]
+    },
+    {
+        "entry": 3,
+        "statements": [
+            {
+                "statement": "You are aware of the importance of cryptographic keys for managing your identity.",
+                "score": 85
+            },
+            {
+                "statement": "You feel that passwords alone are enough to manage your online identity.",
+                "score": 10
+            }
+        ]
+    },
+    {
+        "entry": 4,
+        "statements": [
+            {
+                "statement": "You understand the risks of relying solely on third parties for identity verification.",
+                "score": 80
+            },
+            {
+                "statement": "You believe third parties are always trustworthy for managing your identity.",
+                "score": 20
+            }
+        ]
+    },
+    {
+        "entry": 5,
+        "statements": [
+            {
+                "statement": "You actively manage your identity credentials across multiple devices.",
+                "score": 95
+            },
+            {
+                "statement": "You don't see the need to manage identity credentials on different devices.",
+                "score": 10
+            }
+        ]
+    },
+    {
+        "entry": 6,
+        "statements": [
+            {
+                "statement": "You understand that cryptographic proofs are crucial for identity assertions.",
+                "score": 92
+            },
+            {
+                "statement": "You believe that identity assertions can be trusted without cryptographic proofs.",
+                "score": 25
+            }
+        ]
+    },
+    {
+        "entry": 7,
+        "statements": [
+            {
+                "statement": "You ensure that your identity data is securely stored using decentralized methods.",
+                "score": 89
+            },
+            {
+                "statement": "You store your identity data in easily accessible, centralized locations.",
+                "score": 30
+            }
+        ]
+    },
+    {
+        "entry": 8,
+        "statements": [
+            {
+                "statement": "You understand the importance of being able to revoke identity credentials.",
+                "score": 91
+            },
+            {
+                "statement": "You believe identity credentials do not need to be revocable once issued.",
+                "score": 15
+            }
+        ]
+    },
+    {
+        "entry": 9,
+        "statements": [
+            {
+                "statement": "You regularly audit your digital identity and associated credentials.",
+                "score": 87
+            },
+            {
+                "statement": "You think auditing your identity credentials is unnecessary.",
+                "score": 20
+            }
+        ]
+    },
+    {
+        "entry": 10,
+        "statements": [
+            {
+                "statement": "You are proactive in ensuring your digital identity remains under your control.",
+                "score": 95
+            },
+            {
+                "statement": "You don't take any special actions to keep control over your digital identity.",
+                "score": 10
+            }
+        ]
+    }
+]
