@@ -93,6 +93,8 @@ const percentage = computed(() => {
 import { onMounted } from 'vue';
 
 onMounted(() => {
+  store.emptyResultsInLocalStorage();
+
   document.addEventListener('click', function (event) {
     let targetElement = event.target;
 
