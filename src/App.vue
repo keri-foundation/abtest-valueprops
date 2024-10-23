@@ -40,8 +40,9 @@
     <OffCanvas @call-show-results="showResults" />
     <Results ref="refResults" />
     <MultipleChoiceModal />
+    <SendComments />
     <!-- <p class="fs-5 text-center">awareness</p> -->
-     <!-- <SendResults /> -->
+    <!-- <SendResults /> -->
   </div>
 </template>
 
@@ -56,6 +57,7 @@ import MultipleChoiceModal from './components/MultipleChoiceModal.vue';
 import ToggleSound from './components/ToggleSound.vue';
 import Results from './components/Results.vue';
 import OffCanvas from './components/OffCanvas.vue';
+import SendComments from './components/SendComments.vue';
 import VueSpeedometer from "vue-speedometer"
 // import SendResults from './components/SendResults.vue';
 import { useLedgerStorage } from './composables/useLedgerStorage';
