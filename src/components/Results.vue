@@ -6,9 +6,20 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="resultsModalLabel">Results</h5>
                 </div>
-                <div class="modal-body" v-html="resultsFromLocalStorage"></div>
-                <!-- <textarea class="modal-body">
-                </textarea> -->
+                <!-- Loop through store.ledger -->
+                <div class="modal-body
+                ">
+                    <div v-for="(item, index) in store.ledger" :key="index">
+                        <h2>Set {{ item.id }}</h2>
+                        <h3>Chosen statement</h3>
+                        <p>{{ item.statement}}</p>
+                        <h3>Chosen multiple choice answer</h3>
+                        <p>{{ item.chosenMultipleChoiceAnswer }}</p>
+                        <h3>Comment</h3>
+                        <p>{{ item.comments }}</p>
+                        <hr>
+                    </div>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" @click="hideModal">Close</button>
                 </div>
@@ -30,10 +41,11 @@ const hideModal = () => {
 };
 
 const store = useMainStore();
-const { resultsFromLocalStorage, loadResults } = useResults();
+// const { resultsFromLocalStorage, loadResults } = useResults();
+
+
 
 const showResults = () => {
-    loadResults();
     modal = new Modal(resultsFromLocalStorageModal.value);
     setTimeout(() => {
         modal.show();
