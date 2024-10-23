@@ -1,3 +1,4 @@
+import { reactive } from 'vue';
 import { defineStore } from 'pinia';
 import myConfig from '../../myConfig.js';
 
@@ -17,8 +18,11 @@ export const useMainStore = defineStore('main', {
         allMultipleChoiceAnswered: false,
         results: '',
         shouldNewStatementShow: false,
-        ledger: [],
+        ledger: reactive([]),
     }),
+    getters: {
+        ledgerArray: (state) => state.ledger // Getter to access the ledger array, the only way to detect changes in the array
+    },
     actions: {
         setShouldNewStatementShow(bool) {
             this.shouldNewStatementShow = bool;
@@ -101,6 +105,7 @@ export const useMainStore = defineStore('main', {
                 this.ledger.push(entry);
                 console.log(`Added new entry:`, entry);
             }
+            console.log('store.ledger: ', this.ledger);
         }
     }
 });
