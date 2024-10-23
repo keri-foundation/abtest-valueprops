@@ -8,7 +8,7 @@
             <InfoBar />
             <button @click="showResults" type="button" class="btn btn-outline-primary d-inline-block btn-sm mb-5">Show results</button>
             <SendResults />
-            <SendComments />
+            <!-- <SendComments /> -->
             <hr>
             <p>After you click START, you will be shown two statements each time. Choose the statement that fits you best.</p>
 
@@ -27,7 +27,7 @@
 <script setup>
 import InfoBar from './InfoBar.vue';
 import SendResults from './SendResults.vue';
-import SendComments from './SendComments.vue';
+// import SendComments from './SendComments.vue';
 import { Offcanvas } from 'bootstrap';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
