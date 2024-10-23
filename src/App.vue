@@ -58,6 +58,7 @@ import Results from './components/Results.vue';
 import OffCanvas from './components/OffCanvas.vue';
 import VueSpeedometer from "vue-speedometer"
 // import SendResults from './components/SendResults.vue';
+import { useLedgerStorage } from './composables/useLedgerStorage';
 
 import myConfig from '../myConfig';
 import { useMainStore } from './stores/mainStore.js'
@@ -68,6 +69,8 @@ const { clickSound } = useSounds();
 
 const store = useMainStore();
 const nrOfMultipleChoiceAnswersChosen = computed(() => store.nrOfMultipleChoiceAnswersChosen);
+const { ledger, saveLedgerToLocalStorage, loadLedgerFromLocalStorage } = useLedgerStorage();
+
 
 const refStatements = ref(null);
 const refCylinderLock = ref(null);
@@ -139,4 +142,10 @@ watch(() => store.shouldNewStatementShow, (newValue, oldValue) => {
     }
   }
 });
+
+// Watch the getter `ledgerArray` for changes
+watch(() => store.ledgerArray, (newValue, oldValue) => {
+  saveLedgerToLocalStorage(newValue);
+}, { deep: true });
+
 </script>
