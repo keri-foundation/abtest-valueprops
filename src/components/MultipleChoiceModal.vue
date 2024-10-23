@@ -60,6 +60,12 @@ export default {
             const chosenDomElement = document.querySelector('.correctAnswer');
             if (chosenDomElement) {
                 store.addToResultsInLocalStorage('Chosen Multiple Choice Answer: ' + chosenDomElement.textContent + '<br><hr>');
+                store.setContentOfChosenMultipleChoiceAnswer(chosenDomElement.textContent);
+                store.updateLedger({
+                    id: store.nrOfStatementsChosen,
+                    chosenMultipleChoiceAnswer: chosenDomElement.textContent
+                });
+
                 modal.hide();
 
                 store.setMultipleChoiceAnswerChosen(true);
@@ -72,7 +78,6 @@ export default {
                 resetInputs();
                 // showNewStatement();
                 store.setShouldNewStatementShow(true);
-
             } else {
                 alert('Please choose an answer');
             }
