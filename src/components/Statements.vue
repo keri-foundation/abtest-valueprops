@@ -96,6 +96,11 @@ const chooseStatement = (event) => {
         store.setStatementChosen(true);
         store.setInactiveClassOnStatements(true);
     }
+
+    store.updateLedger({
+        id: store.nrOfStatementsChosen,
+        statement: store.contentOfChosenStatement
+    });
 };
 
 const chooseLeftStatement = () => {
