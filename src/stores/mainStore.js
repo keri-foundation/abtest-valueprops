@@ -7,6 +7,7 @@ export const useMainStore = defineStore('main', {
         nrOfMultipleChoiceAnswersChosen: 0,
         statementChosen: false,
         contentOfChosenStatement: '',
+        contentOfChosenMultipleChoiceAnswer: '',
         multipleChoiceAnswerChosen: false,
         score: 0,
         concatenatedScore: 0,
@@ -15,7 +16,8 @@ export const useMainStore = defineStore('main', {
         allStatementsChosen: false,
         allMultipleChoiceAnswered: false,
         results: '',
-        shouldNewStatementShow: false
+        shouldNewStatementShow: false,
+        ledger: [],
     }),
     actions: {
         setShouldNewStatementShow(bool) {
@@ -35,6 +37,9 @@ export const useMainStore = defineStore('main', {
         },
         setContentOfChosenStatement(content) {
             this.contentOfChosenStatement = content;
+        },
+        setContentOfChosenMultipleChoiceAnswer(content) {
+            this.contentOfChosenMultipleChoiceAnswer = content;
         },
         setMultipleChoiceAnswerChosen(bool) {
             this.multipleChoiceAnswerChosen = bool;
@@ -58,10 +63,10 @@ export const useMainStore = defineStore('main', {
             // If score is not undefined, add it to the concatenated score
             if (score !== undefined) {
                 this.concatenatedScore = this.concatenatedScore.toString() + score.toString();
-            }           
-            
+            }
+
             this.results += text + '\n';
-            
+
             const textToWrite = this.results + '\n' + this.concatenatedScore;
             localStorage.setItem(myConfig.localStorageKey, JSON.stringify(textToWrite));
         },
@@ -72,6 +77,30 @@ export const useMainStore = defineStore('main', {
             this.setStatementChosen(false);
             this.setMultipleChoiceAnswerChosen(false);
             this.setAllStatementsChosen(false);
-            this.setAllMultipleChoiceAnswered(false);        }
+            this.setAllMultipleChoiceAnswered(false);
+        },
+        /**
+         * Updates an existing entry or adds a new one to the ledger based on the provided `entry`.
+         * 
+         * @param {Object} entry - The object representing the entry, which should include an `id` field.
+         *                        - If the `id` exists in the ledger, the entry will be updated.
+         *                        - If the `id` does not exist, a new entry will be added.
+         */
+        updateLedger(entry) {
+            // Step 1: Check if an entry with the same `id` already exists in the ledger
+            const existingEntry = this.ledger.find(item => item.id === entry.id);
+
+            // Step 2: If the `id` exists (i.e., the entry is found), update the existing entry
+            if (existingEntry) {
+                // Object.assign() merges the properties of `entry` into `existingEntry`, updating only the fields that are provided in `entry`
+                Object.assign(existingEntry, entry);
+                console.log(`Updated entry with id ${entry.id}:`, existingEntry);
+            } else {
+                // Step 3: If the `id` does not exist (i.e., no entry is found), add a new entry to the ledger
+                // The new `entry` object is pushed to the ledger array
+                this.ledger.push(entry);
+                console.log(`Added new entry:`, entry);
+            }
+        }
     }
 });
