@@ -77,7 +77,7 @@ export default {
                 store.setSlideInClassOnStatements(false);
                 resetInputs();
                 // showNewStatement();
-                store.setShouldNewStatementShow(true);
+                // store.setShouldNewStatementShow(true);
             } else {
                 alert('Please choose an answer');
             }
