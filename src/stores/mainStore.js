@@ -9,6 +9,7 @@ export const useMainStore = defineStore('main', {
         contentOfChosenStatement: '',
         multipleChoiceAnswerChosen: false,
         score: 0,
+        concatenatedScore: 0,
         hasSlideInClassOnStatements: false,
         hasInactiveClassOnStatements: true,
         allStatementsChosen: false,
@@ -51,11 +52,17 @@ export const useMainStore = defineStore('main', {
             this.allMultipleChoiceAnswered = bool;
         },
         emptyResultsInLocalStorage() {
-            localStorage.setItem(myConfig.localStorageKey, "");
+            localStorage.setItem(myConfig.localStorageKey, JSON.stringify(""));
         },
-        addToResultsInLocalStorage(val) {
-            this.results += val + '\n';
-            const textToWrite = this.results + '\n' + this.score;
+        addToResultsInLocalStorage(text, score) {
+            // If score is not undefined, add it to the concatenated score
+            if (score !== undefined) {
+                this.concatenatedScore = this.concatenatedScore.toString() + score.toString();
+            }           
+            
+            this.results += text + '\n';
+            
+            const textToWrite = this.results + '\n' + this.concatenatedScore;
             localStorage.setItem(myConfig.localStorageKey, JSON.stringify(textToWrite));
         },
         loadResults() {
