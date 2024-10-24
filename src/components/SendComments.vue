@@ -1,6 +1,4 @@
 <template>
-    <p>If you have comments, please post them here.</p>
-
     <div class="modal fade" ref="commentsModal" tabindex="-1" aria-labelledby="commentsModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content commentsModal">
@@ -14,6 +12,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <button class="btn btn-outline-primary btn-sm mt-2" @click="skipComment">Skip</button>
                     <button class="btn btn-outline-primary btn-sm mt-2" @click="submitComment">Submit</button>
                 </div>
             </div>
@@ -40,9 +39,17 @@ const removeExistingBackdrops = () => {
 };
 
 const submitComment = () => {
+    handleComment(comments.value);
+}
+
+const skipComment = () => {
+    handleComment('No comment');
+}
+
+const handleComment = (comm) => {
     console.log('Comment submitted');
-    store.addToResultsInLocalStorage("Comments: " + comments.value);
-    store.updateLedger({ id: store.nrOfStatementsChosen, comments: comments.value });
+    store.addToResultsInLocalStorage("Comments: " + comm);
+    store.updateLedger({ id: store.nrOfStatementsChosen, comments: comm });
     comments.value = ''; // Clear the textarea after submission
     modalComments.hide();
     store.setShouldNewStatementShow(true);
@@ -65,3 +72,13 @@ watch(
     }
 );
 </script>
+<style scoped>
+/*.modal-content.commentsModal {
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+*/
+.modal-content.commentsModal {
+    background-color: var(--financial-color);
+}
+</style>
