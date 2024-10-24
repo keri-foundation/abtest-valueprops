@@ -24,10 +24,11 @@ export function useLedgerStorage() {
             return ledger.value;
         }
 
-        // Convert the string back into a JavaScript object (array of entries)
-        ledger.value = JSON.parse(ledgerString);
-        console.log('Ledger loaded from localStorage:', ledger.value);
-        return ledger.value;
+        // // Convert the string back into a JavaScript object (array of entries)
+        // ledger.value = JSON.parse(ledgerString);
+        // console.log('Ledger loaded from localStorage:', ledger.value);
+        // return ledger.value;
+        return ledgerString;
     };
 
     return {
