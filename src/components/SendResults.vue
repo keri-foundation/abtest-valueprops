@@ -1,53 +1,32 @@
 <template>
-    <button class="btn btn-outline-primary d-inline-block btn-sm mb-5 ms-3"
-        @click="sendEmailWithResults(resultsFromLocalStorage)">Send Results via Email</button>
-    <div v-if="emailFallbackVisible">
-        <p>Copy the following email content:</p>
-        <textarea v-model="emailContent" readonly></textarea>
-        <button class="btn btn-outline-primary d-inline-block btn-sm mb-5" @click="copyToClipboard">Copy to
-            Clipboard</button>
-    </div>
+    <button class="btn btn-outline-primary d-inline-block btn-sm mb-5 ms-3" @click="sendResults()">Send Results</button>
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
-import { Modal } from 'bootstrap';
+import { watch } from 'vue';
 import { useMainStore } from '../stores/mainStore.js'
 import { useResults } from '@/composables/useResults';
+import { postRequest } from '@/composables/useSendResults';
+import { useLedgerStorage } from '@/composables/useLedgerStorage';
+const { ledger, saveLedgerToLocalStorage, loadLedgerFromLocalStorage } = useLedgerStorage();
+
 const { resultsFromLocalStorage, loadResults } = useResults();
 const store = useMainStore();
 
-// Reactive state variables
-const emailFallbackVisible = ref(false);
-const emailContent = ref('');
-
-const sendEmailWithResults = (results) => {
-    alert('ATTENTION: an email will be created with the results. Please send this email to us.');
-    const subject = encodeURIComponent('Quiz Results');
-    const body = encodeURIComponent(`Here are the results: ${results}`);
-    const mailtoLink = `mailto:kor@dwarshuis.com?subject=${subject}&body=${body}`;
-
-    try {
-        window.location.href = mailtoLink;
-    } catch (e) {
-        emailContent.value = `Subject: Quiz Results\n\nHere are the results: ${results}`;
-        emailFallbackVisible.value = true;
-    }
+const sendResults = () => {
+    const results = loadLedgerFromLocalStorage();
+    postRequest("https://keri.foundation/various/inquiry-keri/data/data-receiver.php",results, succes);
 };
 
-const copyToClipboard = () => {
-    navigator.clipboard.writeText(emailContent.value).then(() => {
-        alert('Email content copied to clipboard');
-    });
-};
+const succes = () => {
+    console.log('Results have been sent.');
+}
 
+// When all multiple choice questions have been answered, load the results and send them to remote server
 watch(() => store.allMultipleChoiceAnswered, (newValue) => {
     if (newValue) {
         loadResults();
-        console.log(resultsFromLocalStorage.value);
-        sendEmailWithResults(resultsFromLocalStorage.value);
-
+        sendResults(resultsFromLocalStorage.value);
     }
 });
-
 </script>
