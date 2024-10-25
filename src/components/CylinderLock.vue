@@ -1,18 +1,18 @@
 <template>
-  <div class="lock-container" ref="lockContainer">
+  <div v-if="!store.allMultipleChoiceAnswered" class="lock-container" ref="lockContainer">
     <div v-for="(item, index) in 10" :key="index" class="lock-cylinder" :data-id="index + 1" ref="cylinders">
     </div>
   </div>
-  <div class="knob-container" ref="knobContainer">
+  <div v-if="!store.allMultipleChoiceAnswered" class="knob-container" ref="knobContainer">
     <div class="knob" ref="knob">
       <div class="knob-center"></div> <!-- Vault knob center -->
     </div>
   </div>
 
-  <div class="key" ref="key"></div>
-  <div class="nr-of-tasks-to-go text-center">Questions to go:<span class="nr-of-tasks-to-go-nr">{{ nrTasksToGo }}</span>
+  <div v-if="!store.allMultipleChoiceAnswered" class="key" ref="key"></div>
+  <div v-if="!store.allMultipleChoiceAnswered" class="nr-of-tasks-to-go text-center">Questions to go:<span
+      class="nr-of-tasks-to-go-nr">{{ nrTasksToGo }}</span>
   </div>
-  <Conclusion />
 </template>
 
 <script setup>
@@ -23,8 +23,6 @@ const { lockSound, keySound } = useSounds();
 import { ref, onMounted, computed } from 'vue';
 import { useMainStore } from '../stores/mainStore.js'
 import myConfig from '../../myConfig.js';
-
-import Conclusion from './Conclusion.vue'
 
 const cylinders = ref([]);
 const knob = ref(null);
@@ -198,12 +196,12 @@ defineExpose({
   /* Ensure smooth transition */
   /*transform: translateY(1px);*/
   transform: translate(0px, 2px);
-  
+
   /* Make the cylinder overlap the previous one by 1px */
   display: inline-block;
   margin: 0;
   margin-left: -2px;
-  
+
   border: 2px solid #000;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 0;
@@ -245,7 +243,7 @@ defineExpose({
 }
 
 .knob {
-  
+
   width: 130px;
   height: 130px;
   border-radius: 50%;
