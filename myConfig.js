@@ -9,6 +9,7 @@ const myConfig = {
   lockAnimationMaximalSeconds: 3,
   cylinderLockSpeed: 150,
   localStorageKey: 'keri-questionaire-results',
+  dataReceiverEndpoint: 'https://keri.foundation/various/inquiry-keri/data-receiver/data-receiver.php'
 } 
 
 export default myConfig;
