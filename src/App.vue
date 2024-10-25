@@ -1,39 +1,12 @@
 <template>
   <div id="animation-container">
     <h1 class="text-center">Autonomous Identity Test</h1>
-    <CylinderLock ref="refCylinderLock" />
-    <Statements ref="refStatements" />
     <div class="vue-speedometer-container">
       <VueSpeedometer @click="showResults" :minValue="0" :maxValue="100" :value="percentage" :fluidWidth="true"
-        :ringWidth="60" needleTransition="easeElastic" :needleTransitionDuration="3333" :customSegmentLabels='[
-          {
-            text: "No",
-            position: "INSIDE",
-            color: "#555",
-          },
-          {
-            text: "Little",
-            position: "INSIDE",
-            color: "#555",
-          },
-          {
-            text: "Medium",
-            position: "INSIDE",
-            color: "#555",
-            fontSize: "19px",
-          },
-          {
-            text: "Good",
-            position: "INSIDE",
-            color: "#555",
-          },
-          {
-            text: "Excellent",
-            position: "INSIDE",
-            color: "#555",
-          },
-        ]' />
+        :ringWidth="20" needleTransition="easeElastic" :needleTransitionDuration="3333"  />
     </div>
+    <CylinderLock ref="refCylinderLock" />
+    <Statements ref="refStatements" />
     <OpeningScreen />
     <ToggleSound />
     <OffCanvas @call-show-results="showResults" />
