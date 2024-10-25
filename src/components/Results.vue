@@ -1,41 +1,31 @@
 <template>
-    <div class="modal fade" ref="resultsFromLocalStorageModal" tabindex="-1" aria-labelledby="resultsModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content resultsmodal">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="resultsModalLabel">Results</h5>
-                </div>
-                <div class="modal-body">
-                    <div v-for="(item, index) in store.ledger" :key="index">
-                        <h2>Set {{ item.id }}</h2>
-                        <h3>Chosen statement</h3>
-                        <p>{{ item.statement}}</p>
-                        <h3>Chosen multiple choice answer</h3>
-                        <p>{{ item.chosenMultipleChoiceAnswer }}</p>
-                        <h3>Comment</h3>
-                        <textarea :disabled="!isEditing[item.id]" class="form-control"
-                            v-model="comments[item.id]"></textarea>
-                        <button :disabled="!isEditing[item.id]" class="btn btn-outline-primary btn-sm mt-2"
-                            @click="saveComments(item.id)">Save</button>
-                        <button :disabled="isEditing[item.id]" class="btn btn-outline-primary btn-sm mt-2 ms-2" @click="enableEdit(item.id)">Edit</button>
-                        <hr>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" @click="hideModal">Close</button>
-                </div>
+    <transition name="bounce">
+        <div v-if="store.allMultipleChoiceAnswered">
+            <div class="alert alert-info" role="alert">
+                These are your answers. Please review your comments and then send them to us.
+            </div>
+
+            <div v-for="(item, index) in store.ledger" :key="index">
+                <h2>Set {{ item.id }}</h2>
+                <h3>Chosen statement</h3>
+                <p>{{ item.statement}}</p>
+                <h3>Chosen multiple choice answer</h3>
+                <p>{{ item.chosenMultipleChoiceAnswer }}</p>
+                <h3>Comment</h3>
+                <textarea :disabled="!isEditing[item.id]" class="form-control" v-model="comments[item.id]"></textarea>
+                <button :disabled="!isEditing[item.id]" class="btn btn-outline-primary btn-sm mt-2"
+                    @click="saveComments(item.id)">Save</button>
+                <button :disabled="isEditing[item.id]" class="btn btn-outline-primary btn-sm mt-2 ms-2"
+                    @click="enableEdit(item.id)">Edit</button>
+                <hr>
             </div>
         </div>
-    </div>
+    </transition>
 </template>
-
 <script setup>
 import { ref, reactive, watch } from 'vue';
-import { Modal } from 'bootstrap';
 import { useMainStore } from '../stores/mainStore.js';
 
-let modal;
 const resultsFromLocalStorageModal = ref(null);
 const hideModal = () => {
     modal.hide();
@@ -60,12 +50,12 @@ watch(() => store.ledgerArray, (newValue, oldValue) => {
     });
 }, { deep: true });
 
-const showResults = () => {
-    modal = new Modal(resultsFromLocalStorageModal.value);
-    setTimeout(() => {
-        modal.show();
-    }, 1);
-};
+// const showResults = () => {
+//     modal = new Modal(resultsFromLocalStorageModal.value);
+//     setTimeout(() => {
+//         modal.show();
+//     }, 1);
+// };
 
 const saveComments = (id) => {
     store.updateLedger({ id, comments: comments[id] });
@@ -81,7 +71,7 @@ const disableEdit = (id) => {
 };
 
 defineExpose({
-    showResults
+    // showResults
 });
 </script>
 
@@ -90,4 +80,42 @@ defineExpose({
     background-color: var(--financial-color);
 }
 
+</style>
+
+<style>
+.bounce-enter-active {
+    animation: bounceIn 0.5s ease;
+}
+
+.bounce-leave-active {
+    animation: bounceOut 0.5s ease;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes bounceOut {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(0.3);
+    }
+}
 </style>
