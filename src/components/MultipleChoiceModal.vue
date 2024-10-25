@@ -63,6 +63,7 @@ export default {
                 store.setContentOfChosenMultipleChoiceAnswer(chosenDomElement.textContent);
                 store.updateLedger({
                     id: store.nrOfStatementsChosen,
+                    multipleChoiceQuestion: correspondingQuestion,
                     chosenMultipleChoiceAnswer: chosenDomElement.textContent
                 });
 
