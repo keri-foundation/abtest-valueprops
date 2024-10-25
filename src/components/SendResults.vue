@@ -5,7 +5,7 @@
 
     <MathCaptcha v-if="store.allMultipleChoiceAnswered" @captcha-validated="isCaptchaValid = $event" />
 
-    <button :disabled="!isCaptchaValid" v-if="store.allMultipleChoiceAnswered"
+    <button :disabled="!isCaptchaValid" v-if="!isDataSend && isCaptchaValid"
         :class="{ 'btn-disabled': isDataSend, 'glow': !isDataSend }" class="btn btn-outline-secondary d-inline-block"
         @click="sendResults()">Send Results</button>
 </template>
