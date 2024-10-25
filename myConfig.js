@@ -4,7 +4,7 @@ const myConfig = {
   statementsData: 'statements.json',
   evaluationData: 'evaluation.json',
   multipleChoiceData: 'multiplechoice.json',
-  nrOfTasksToBeDone: 5,
+  nrOfTasksToBeDone: 2,
   lockAnimationMinimalSeconds: 1,
   lockAnimationMaximalSeconds: 3,
   cylinderLockSpeed: 150,
