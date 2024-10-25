@@ -1,13 +1,13 @@
 <template>
-    <div v-if="isDataSend" class="alert alert-success" role="alert">
+    <div v-if="isDataSend" class="alert-glow alert alert-success" role="alert">
         Your results have been sent successfully. Thank you for participating!
     </div>
 
-    <MathCaptcha  v-if="store.allMultipleChoiceAnswered" @captcha-validated="isCaptchaValid = $event" />
+    <MathCaptcha v-if="store.allMultipleChoiceAnswered" @captcha-validated="isCaptchaValid = $event" />
 
     <button :disabled="!isCaptchaValid" v-if="store.allMultipleChoiceAnswered"
-        :class="{ 'btn-disabled': isDataSend, 'btn-glow': !isDataSend }"
-        class="btn btn-outline-secondary d-inline-block" @click="sendResults()">Send Results</button>
+        :class="{ 'btn-disabled': isDataSend, 'glow': !isDataSend }" class="btn btn-outline-secondary d-inline-block"
+        @click="sendResults()">Send Results</button>
 </template>
 
 <script setup>
@@ -28,7 +28,7 @@ const store = useMainStore();
 
 const sendResults = () => {
     const results = loadLedgerFromLocalStorage();
-    postRequest(myConfig.dataReceiverEndpoint,results, succes);
+    postRequest(myConfig.dataReceiverEndpoint, results, succes);
 };
 
 const succes = () => {
@@ -45,9 +45,6 @@ const succes = () => {
 // });
 </script>
 <style scoped>
-
-
-
 @keyframes glow {
     0% {
         box-shadow: 0 0 0 0 #14dca0;
@@ -67,7 +64,18 @@ const succes = () => {
     cursor: pointer;
 }
 
-button:not(:disabled).btn-glow {
+button:not(:disabled).glow {
+    background: #14dca0;
+    color: #333;
+    font-size: 1em;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 16px 34px;
+    box-shadow: 0 0 0 0 #14dca0;
+    animation: glow 1.4s linear infinite;
+}
+
+.alert-glow {
     background: #14dca0;
     color: #333;
     font-size: 1em;
