@@ -66,6 +66,7 @@ a:hover {
   margin: auto !important;
   background-color: var(--container-background-color);
   padding: 1em;
+  padding-bottom: 10em;
   height: 100%;
   /*position: relative;
     bottom: 0;
