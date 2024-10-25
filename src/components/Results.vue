@@ -5,19 +5,21 @@
                 These are your answers. Please review your comments and then send them to us.
             </div>
 
-            <div v-for="(item, index) in store.ledger" :key="index">
-                <h2>Set {{ item.id }}</h2>
-                <h3>Chosen statement</h3>
-                <p>{{ item.statement}}</p>
-                <h3>Chosen multiple choice answer</h3>
-                <p>{{ item.chosenMultipleChoiceAnswer }}</p>
-                <h3>Comment</h3>
-                <textarea :disabled="!isEditing[item.id]" class="form-control" v-model="comments[item.id]"></textarea>
-                <button :disabled="!isEditing[item.id]" class="btn btn-outline-primary btn-sm mt-2"
-                    @click="saveComments(item.id)">Save</button>
-                <button :disabled="isEditing[item.id]" class="btn btn-outline-primary btn-sm mt-2 ms-2"
-                    @click="enableEdit(item.id)">Edit</button>
-                <hr>
+            <div class="card mb-4" v-for="(item, index) in store.ledger" :key="index">
+                <div class="card-body">
+                    <h2>Set {{ item.id }}</h2>
+                    <h3>Chosen statement</h3>
+                    <p>{{ item.statement }}</p>
+                    <h3>Chosen multiple choice answer</h3>
+                    <p>{{ item.chosenMultipleChoiceAnswer }}</p>
+                    <h3>Comment</h3>
+                    <textarea :disabled="!isEditing[item.id]" class="form-control"
+                        v-model="comments[item.id]"></textarea>
+                    <button :disabled="!isEditing[item.id]" class="btn btn-outline-primary btn-sm mt-2"
+                        @click="saveComments(item.id)">Save</button>
+                    <button :disabled="isEditing[item.id]" class="btn btn-outline-primary btn-sm mt-2 ms-2"
+                        @click="enableEdit(item.id)">Edit</button>
+                </div>
             </div>
         </div>
     </transition>
@@ -83,6 +85,11 @@ defineExpose({
 </style>
 
 <style>
+
+.card {
+    background-color: var(--background-color) !important;
+}
+
 .bounce-enter-active {
     animation: bounceIn 0.5s ease;
 }
