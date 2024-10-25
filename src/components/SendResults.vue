@@ -11,9 +11,8 @@
 </template>
 
 <script setup>
-import { watch, ref } from 'vue';
+import { ref } from 'vue';
 import { useMainStore } from '../stores/mainStore.js'
-import { useResults } from '@/composables/useResults';
 import { postRequest } from '@/composables/useSendResults';
 import { useLedgerStorage } from '@/composables/useLedgerStorage';
 import MathCaptcha from './MathCaptcha.vue';
@@ -23,7 +22,6 @@ const { ledger, saveLedgerToLocalStorage, loadLedgerFromLocalStorage } = useLedg
 const isDataSend = ref(false);
 const isCaptchaValid = ref(false); // Control submit button
 
-const { resultsFromLocalStorage, loadResults } = useResults();
 const store = useMainStore();
 
 const sendResults = () => {
@@ -32,7 +30,6 @@ const sendResults = () => {
 };
 
 const succes = () => {
-    console.log('Results have been sent.');
     isDataSend.value = true;
 }
 
