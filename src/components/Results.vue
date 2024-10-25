@@ -1,8 +1,8 @@
 <template>
     <transition name="bounce">
         <div v-if="store.allMultipleChoiceAnswered">
-            <div class="alert alert-info" role="alert">
-                These are your answers. Please review your comments and then send them to us.
+            <div class="fs-5 alert alert-info" role="alert">
+                <strong>These are your answers. Please review your comments and then send them to us.</strong>
             </div>
 
             <div class="card mb-4" v-for="(item, index) in store.ledger" :key="index">
