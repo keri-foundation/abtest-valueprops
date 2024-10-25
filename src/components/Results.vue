@@ -10,6 +10,8 @@
                     <h2>Set {{ item.id }}</h2>
                     <h3>Chosen statement</h3>
                     <p>{{ item.statement }}</p>
+                    <h3>Multiple choice question</h3>
+                    <p>{{item.multipleChoiceQuestion}}</p>
                     <h3>Chosen multiple choice answer</h3>
                     <p>{{ item.chosenMultipleChoiceAnswer }}</p>
                     <h3>Comment</h3>
