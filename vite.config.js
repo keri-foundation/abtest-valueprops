@@ -6,7 +6,8 @@ import vue from '@vitejs/plugin-vue'
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   // base: mode === 'production' ? '/test/cylinder-lock-vue/' : '/',
-  base: mode === 'production' ? '/abtest-valueprops/' : '/',
+  // base: mode === 'production' ? '/abtest-valueprops/' : '/',
+  base: mode === 'production' ? '/various/inquiry-keri/app/' : '/',
 
   plugins: [
     vue(),
