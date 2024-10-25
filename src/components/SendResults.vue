@@ -3,9 +3,11 @@
         Your results have been sent successfully. Thank you for participating!
     </div>
 
-    <button :disabled="isDataSend" v-if="store.allMultipleChoiceAnswered"
+    <MathCaptcha  v-if="store.allMultipleChoiceAnswered" @captcha-validated="isCaptchaValid = $event" />
+
+    <button :disabled="!isCaptchaValid" v-if="store.allMultipleChoiceAnswered"
         :class="{ 'btn-disabled': isDataSend, 'btn-glow': !isDataSend }"
-        class="btn btn-outline-primary d-inline-block btn-sm mb-5 ms-3" @click="sendResults()">Send Results</button>
+        class="btn btn-outline-secondary d-inline-block" @click="sendResults()">Send Results</button>
 </template>
 
 <script setup>
@@ -14,14 +16,19 @@ import { useMainStore } from '../stores/mainStore.js'
 import { useResults } from '@/composables/useResults';
 import { postRequest } from '@/composables/useSendResults';
 import { useLedgerStorage } from '@/composables/useLedgerStorage';
+import MathCaptcha from './MathCaptcha.vue';
+import myConfig from '../../myConfig.js';
+
 const { ledger, saveLedgerToLocalStorage, loadLedgerFromLocalStorage } = useLedgerStorage();
 const isDataSend = ref(false);
+const isCaptchaValid = ref(false); // Control submit button
+
 const { resultsFromLocalStorage, loadResults } = useResults();
 const store = useMainStore();
 
 const sendResults = () => {
     const results = loadLedgerFromLocalStorage();
-    postRequest("https://keri.foundation/various/inquiry-keri/data/data-receiver.php",results, succes);
+    postRequest(myConfig.dataReceiverEndpoint,results, succes);
 };
 
 const succes = () => {
@@ -60,7 +67,7 @@ const succes = () => {
     cursor: pointer;
 }
 
-.btn-glow {
+button:not(:disabled).btn-glow {
     background: #14dca0;
     color: #333;
     font-size: 1em;
