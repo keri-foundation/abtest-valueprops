@@ -35,14 +35,13 @@
         ]' />
     </div>
     <OpeningScreen />
-    <!-- <Conclusion /> -->
     <ToggleSound />
     <OffCanvas @call-show-results="showResults" />
+
     <Results ref="refResults" />
     <MultipleChoiceModal />
     <SendComments />
-    <!-- <p class="fs-5 text-center">awareness</p> -->
-    <!-- <SendResults /> -->
+    <SendResults />
   </div>
 </template>
 
@@ -51,7 +50,6 @@
 import { ref, computed, watch } from 'vue';
 import CylinderLock from './components/CylinderLock.vue'
 import OpeningScreen from './components/OpeningScreen.vue';
-// import Conclusion from './components/Conclusion.vue'
 import Statements from './components/Statements.vue';
 import MultipleChoiceModal from './components/MultipleChoiceModal.vue';
 import ToggleSound from './components/ToggleSound.vue';
@@ -59,20 +57,17 @@ import Results from './components/Results.vue';
 import OffCanvas from './components/OffCanvas.vue';
 import SendComments from './components/SendComments.vue';
 import VueSpeedometer from "vue-speedometer"
-// import SendResults from './components/SendResults.vue';
+import SendResults from './components/SendResults.vue';
 import { useLedgerStorage } from './composables/useLedgerStorage';
 
 import myConfig from '../myConfig';
 import { useMainStore } from './stores/mainStore.js'
-const baseUrl = import.meta.env.BASE_URL;
-
 import { useSounds } from '@/composables/useSounds';
 const { clickSound } = useSounds();
 
 const store = useMainStore();
 const nrOfMultipleChoiceAnswersChosen = computed(() => store.nrOfMultipleChoiceAnswersChosen);
 const { ledger, saveLedgerToLocalStorage, loadLedgerFromLocalStorage } = useLedgerStorage();
-
 
 const refStatements = ref(null);
 const refCylinderLock = ref(null);
