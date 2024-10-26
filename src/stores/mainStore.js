@@ -80,16 +80,12 @@ export const useMainStore = defineStore('main', {
             // Step 2: If the `id` exists (i.e., the entry is found), update the existing entry
             if (existingEntry) {
                 // Object.assign() merges the properties of `entry` into `existingEntry`, updating only the fields that are provided in `entry`
-                console.log('entry: ', entry);
                 Object.assign(existingEntry, entry);
-                // console.log(`Updated entry with id ${entry.id}:`, existingEntry);
             } else {
                 // Step 3: If the `id` does not exist (i.e., no entry is found), add a new entry to the ledger
                 // The new `entry` object is pushed to the ledger array
                 this.ledger.push(entry);
-                // console.log(`Added new entry:`, entry);
             }
-            // console.log('store.ledger: ', this.ledger);
         }
     }
 });
