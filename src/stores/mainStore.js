@@ -60,23 +60,6 @@ export const useMainStore = defineStore('main', {
         setAllMultipleChoiceAnswered(bool) {
             this.allMultipleChoiceAnswered = bool;
         },
-        emptyResultsInLocalStorage() {
-            localStorage.setItem(myConfig.localStorageKey, JSON.stringify(""));
-        },
-        addToResultsInLocalStorage(text, score) {
-            // If score is not undefined, add it to the concatenated score
-            if (score !== undefined) {
-                this.concatenatedScore = this.concatenatedScore.toString() + score.toString();
-            }
-
-            this.results += text + '\n';
-
-            const textToWrite = this.results + '\n' + this.concatenatedScore;
-            localStorage.setItem(myConfig.localStorageKey, JSON.stringify(textToWrite));
-        },
-        loadResults() {
-            return JSON.parse(localStorage.getItem(myConfig.localStorageKey));
-        },
         resetStatementsAndMultipleChoice() {
             this.setStatementChosen(false);
             this.setMultipleChoiceAnswerChosen(false);
@@ -97,15 +80,16 @@ export const useMainStore = defineStore('main', {
             // Step 2: If the `id` exists (i.e., the entry is found), update the existing entry
             if (existingEntry) {
                 // Object.assign() merges the properties of `entry` into `existingEntry`, updating only the fields that are provided in `entry`
+                console.log('entry: ', entry);
                 Object.assign(existingEntry, entry);
-                console.log(`Updated entry with id ${entry.id}:`, existingEntry);
+                // console.log(`Updated entry with id ${entry.id}:`, existingEntry);
             } else {
                 // Step 3: If the `id` does not exist (i.e., no entry is found), add a new entry to the ledger
                 // The new `entry` object is pushed to the ledger array
                 this.ledger.push(entry);
-                console.log(`Added new entry:`, entry);
+                // console.log(`Added new entry:`, entry);
             }
-            console.log('store.ledger: ', this.ledger);
+            // console.log('store.ledger: ', this.ledger);
         }
     }
 });

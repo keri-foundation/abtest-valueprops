@@ -57,15 +57,22 @@ export default {
         };
 
         const processChoice = () => {
+            console.log("xxxxxx");
             const chosenDomElement = document.querySelector('.correctAnswer');
+            const multipleChoiceQuestion = document.querySelector('.miniquiz legend');
             if (chosenDomElement) {
-                store.addToResultsInLocalStorage('Chosen Multiple Choice Answer: ' + chosenDomElement.textContent + '<br><hr>');
                 store.setContentOfChosenMultipleChoiceAnswer(chosenDomElement.textContent);
+                console.log('store.nrOfStatementsChosen: ', store.nrOfStatementsChosen);
+                console.log('correspondingQuestion: ', correspondingQuestion.value);
+                console.log('chosenDomElement.textContent: ', chosenDomElement.textContent);
+
                 store.updateLedger({
                     id: store.nrOfStatementsChosen,
-                    multipleChoiceQuestion: correspondingQuestion,
+                    multipleChoiceQuestion: multipleChoiceQuestion.textContent,
                     chosenMultipleChoiceAnswer: chosenDomElement.textContent
                 });
+
+console.log('store.ledger: ', store.ledger);
 
                 modal.hide();
 

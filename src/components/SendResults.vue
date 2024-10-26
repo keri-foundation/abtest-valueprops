@@ -14,13 +14,13 @@
 import { ref } from 'vue';
 import { useMainStore } from '../stores/mainStore.js'
 import { postRequest } from '@/composables/useSendResults';
-import { useLedgerStorage } from '@/composables/useLedgerStorage';
+import { useLedgerLocalStorage } from '@/composables/useLedgerLocalStorage';
 import MathCaptcha from './MathCaptcha.vue';
 import myConfig from '../../myConfig.js';
 
-const { ledger, saveLedgerToLocalStorage, loadLedgerFromLocalStorage } = useLedgerStorage();
+const { loadLedgerFromLocalStorage } = useLedgerLocalStorage();
 const isDataSend = ref(false);
-const isCaptchaValid = ref(false); // Control submit button
+const isCaptchaValid = ref(false);
 
 const store = useMainStore();
 
@@ -32,14 +32,6 @@ const sendResults = () => {
 const succes = () => {
     isDataSend.value = true;
 }
-
-// // When all multiple choice questions have been answered, load the results and send them to remote server
-// watch(() => store.allMultipleChoiceAnswered, (newValue) => {
-//     if (newValue) {
-//         loadResults();
-//         sendResults(resultsFromLocalStorage.value);
-//     }
-// });
 </script>
 <style scoped>
 @keyframes glow {

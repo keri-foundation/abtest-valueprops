@@ -47,8 +47,7 @@ const skipComment = () => {
 }
 
 const handleComment = (comm) => {
-    console.log('Comment submitted');
-    store.addToResultsInLocalStorage("Comments: " + comm);
+    // console.log('Comment submitted');
     store.updateLedger({ id: store.nrOfStatementsChosen, comments: comm });
     comments.value = ''; // Clear the textarea after submission
     modalComments.hide();

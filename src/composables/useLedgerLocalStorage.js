@@ -1,6 +1,7 @@
 import { ref } from 'vue';
+import myConfig from '../../myConfig';
 
-export function useLedgerStorage() {
+export function useLedgerLocalStorage() {
     const ledger = ref([]);
 
     // Method to save the ledger to localStorage
@@ -8,18 +9,18 @@ export function useLedgerStorage() {
         // Convert the ledger array to a JSON string
         const ledgerString = JSON.stringify(newLedger);
         // Store the string in localStorage under the key 'ledger'
-        localStorage.setItem('ledger', ledgerString);
-        console.log('Ledger saved to localStorage:', ledgerString);
+        localStorage.setItem(myConfig.localStorageKey, ledgerString);
+        // console.log('Ledger saved to localStorage:', ledgerString);
     };
 
     // Method to load the ledger from localStorage
     const loadLedgerFromLocalStorage = () => {
         // Retrieve the ledger string from localStorage
-        const ledgerString = localStorage.getItem('ledger');
+        const ledgerString = localStorage.getItem(myConfig.localStorageKey);
 
         // If no ledger is found in localStorage, return an empty array
         if (!ledgerString) {
-            console.log('No ledger found in localStorage.');
+            // console.log('No ledger found in localStorage.');
             ledger.value = [];
             return ledger.value;
         }

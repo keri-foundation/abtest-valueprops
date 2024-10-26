@@ -30,7 +30,6 @@
 import { ref, reactive, watch } from 'vue';
 import { useMainStore } from '../stores/mainStore.js';
 
-const resultsFromLocalStorageModal = ref(null);
 const hideModal = () => {
     modal.hide();
 };
@@ -53,13 +52,6 @@ watch(() => store.ledgerArray, (newValue, oldValue) => {
         comments[item.id] = item.comments;
     });
 }, { deep: true });
-
-// const showResults = () => {
-//     modal = new Modal(resultsFromLocalStorageModal.value);
-//     setTimeout(() => {
-//         modal.show();
-//     }, 1);
-// };
 
 const saveComments = (id) => {
     store.updateLedger({ id, comments: comments[id] });
