@@ -111,7 +111,7 @@ watch(() => store.shouldNewStatementShow, (newValue, oldValue) => {
   }
 });
 
-// Watch the getter `ledgerArray` for changes
+// Watch the getter `ledgerArray` for changes, this getter is necessary to trigger the watch because the normal way of watching the store.ledger directly does not work
 watch(() => store.ledgerArray, (newValue, oldValue) => {
   saveLedgerToLocalStorage(newValue);
 }, { deep: true });
