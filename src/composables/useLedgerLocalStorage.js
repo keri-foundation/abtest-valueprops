@@ -10,7 +10,6 @@ export function useLedgerLocalStorage() {
         const ledgerString = JSON.stringify(newLedger);
         // Store the string in localStorage under the key 'ledger'
         localStorage.setItem(myConfig.localStorageKey, ledgerString);
-        // console.log('Ledger saved to localStorage:', ledgerString);
     };
 
     // Method to load the ledger from localStorage
@@ -20,15 +19,10 @@ export function useLedgerLocalStorage() {
 
         // If no ledger is found in localStorage, return an empty array
         if (!ledgerString) {
-            // console.log('No ledger found in localStorage.');
             ledger.value = [];
             return ledger.value;
         }
 
-        // // Convert the string back into a JavaScript object (array of entries)
-        // ledger.value = JSON.parse(ledgerString);
-        // console.log('Ledger loaded from localStorage:', ledger.value);
-        // return ledger.value;
         return ledgerString;
     };
 
