@@ -58,12 +58,19 @@ export default {
 
         const processChoice = () => {
             const chosenDomElement = document.querySelector('.correctAnswer');
-            const multipleChoiceQuestion = document.querySelector('.miniquiz legend');
+
+            // create snapshot of the reactive value
+            const question = correspondingQuestion.value;
+
             if (chosenDomElement) {
                 store.setContentOfChosenMultipleChoiceAnswer(chosenDomElement.textContent);
                 store.updateLedger({
                     id: store.nrOfStatementsChosen,
-                    multipleChoiceQuestion: multipleChoiceQuestion.textContent,
+
+                    // Snapshot value of the reactive value
+                    multipleChoiceQuestion: question,
+
+                    // Get the text content of the chosen answer via the DOM element, not a snapshot of the reactive value, which would be cleaner
                     chosenMultipleChoiceAnswer: chosenDomElement.textContent
                 });
 
