@@ -38,9 +38,9 @@ body::before, .opening-screen::before {
   width: 100%;
   height: 100%;
   background-color: var(--background-color);
-  background: url('./img/ssi-3.jpg') no-repeat center center fixed;
+  background: url('./img/background.jpg') no-repeat center center fixed;
   background-size: cover;
-  filter: opacity(10%) blur(0px) sepia(100%);
+  /* filter: opacity(10%) blur(0px) sepia(100%); */
   z-index: -1;
   /* Ensure the pseudo-element is behind the body content */
 }
