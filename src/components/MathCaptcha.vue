@@ -1,6 +1,6 @@
 <template>
     <label v-if="!isCaptchaCorrect" class="form-group">
-        What is {{ num1 }} + {{ num2 }}?
+        What is {{ num1 }} + {{ num2 }} (to make sure you are not a bot)?
         <input type="number" v-model.number="userAnswer" class="w-25 d-inline form-control" placeholder="Your Answer"
             required @focus="clearPlaceholder" />
         <button @click="checkCaptcha" class="btn btn-outline-secondary">Submit Answer</button>
