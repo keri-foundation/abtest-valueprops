@@ -5,11 +5,8 @@
             <h2 class="notary-header">Statement A</h2>
             <div class="notary-body">
                 <p class="statement-text">{{ leftStatement }}</p>
-                <br><br>
                 <div class="text-center"><a href="#" @click="chooseLeftStatement"
-                        class="btn btn-outline-secondary d-inline-block mb-2">Choose this statement</a></div>
-                <!-- <strong>Choose this statement</strong><br>
-                if you agree with this the most -->
+                    class="btn btn-outline-secondary d-inline-block mb-2">Choose this statement</a></div>
             </div>
             <!-- <div class="notary-footer">Issued on {{ currentDate }}</div> -->
         </div>
@@ -20,11 +17,8 @@
             <h2 class="notary-header">Statement B</h2>
             <div class="notary-body">
                 <p class="statement-text">{{ rightStatement }}</p>
-                <br><br>
                 <div class="text-center"><a href="#" @click="chooseRightStatement"
-                        class="btn btn-outline-secondary d-inline-block mb-2">Choose this statement</a></div>
-                <!-- <strong>Choose this statement</strong><br>
-                if you agree with this the most -->
+                    class="btn btn-outline-secondary d-inline-block mb-2">Choose this statement</a></div>
             </div>
             <!-- <div class="notary-footer">Issued on {{ currentDate }}</div> -->
         </div>
@@ -33,24 +27,17 @@
 
 <script setup>
 import { ref, onMounted, computed, watch } from 'vue';
-
 import { useMainStore } from '../stores/mainStore.js';
 import myConfig from '../../myConfig';
 const baseUrl = import.meta.env.BASE_URL;
-
 import { useSounds } from '@/composables/useSounds';
 const { wooshSound } = useSounds();
-
-import { useEvaluation } from '@/composables/useEvaluation';
-const { evaluation, error } = useEvaluation();
 const statements = ref([]);
 const leftStatement = ref(null);
 const leftStatementScore = ref(null);
 const rightStatement = ref(null);
 const rightStatementScore = ref(null);
 const store = useMainStore();
-const currentDate = new Date().toLocaleDateString();
-
 let statementChosen = computed(() => store.statementChosen);
 const hasSlideInClassOnStatements = computed(() => store.hasSlideInClassOnStatements);
 const hasInactiveClassOnStatements = computed(() => store.hasInactiveClassOnStatements);
