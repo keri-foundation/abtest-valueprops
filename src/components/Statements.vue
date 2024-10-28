@@ -1,24 +1,24 @@
 <template>
     <div href="#" class="statement" id="leftStatement" :class="statementClassLeft">
 
-        <div class="notary-document">
-            <h2 class="notary-header">Statement A</h2>
+        <div class="notary-document hand-drawn hand-drawn1">
+            <h2 class="notary-header marker1">Statement A</h2>
             <div class="notary-body">
                 <p class="statement-text">{{ leftStatement }}</p>
                 <div class="text-center"><a href="#" @click="chooseLeftStatement"
-                    class="btn btn-outline-secondary d-inline-block mb-2">Choose this statement</a></div>
+                        class="btn btn-outline-secondary d-inline-block mb-2">Choose this statement</a></div>
             </div>
             <!-- <div class="notary-footer">Issued on {{ currentDate }}</div> -->
         </div>
     </div>
 
     <div href="#" class="statement" id="rightStatement" :class="statementClassRight">
-        <div class="notary-document">
-            <h2 class="notary-header">Statement B</h2>
+        <div class="notary-document hand-drawn hand-drawn2">
+            <h2 class="notary-header marker2">Statement B</h2>
             <div class="notary-body">
                 <p class="statement-text">{{ rightStatement }}</p>
                 <div class="text-center"><a href="#" @click="chooseRightStatement"
-                    class="btn btn-outline-secondary d-inline-block mb-2">Choose this statement</a></div>
+                        class="btn btn-outline-secondary d-inline-block mb-2">Choose this statement</a></div>
             </div>
             <!-- <div class="notary-footer">Issued on {{ currentDate }}</div> -->
         </div>
@@ -230,7 +230,10 @@ a {
 .statement-text {
     font-variant: small-caps;
     font-size: 1.5em;
-    background: var(--accent-color);
+    line-height: 1;
+    font-weight: bold;
+    
+    /*background: var(--accent-color);*/
     padding: 0.5em;
 }
 
@@ -240,5 +243,32 @@ a {
     font-size: 0.9em;
     font-style: italic;
     color: #555;
+}
+
+/* Based on https: //codepen.io/tmrDevelops/pen/VeRvKX */
+.hand-drawn {
+    padding: 1rem 1rem !important;
+    margin: 0 1rem !important;
+    transition: all .5s ease !important;
+    color: #B5735D !important;
+    letter-spacing: 1px !important;
+    outline: none !important;
+    border: solid 7px #41403E !important;
+}
+
+.hand-drawn1 {
+    border-top-left-radius: 255px 15px !important;
+    border-top-right-radius: 15px 225px !important;
+    border-bottom-right-radius: 225px 15px !important;
+    border-bottom-left-radius: 15px 255px !important;
+
+
+}
+
+.hand-drawn2 {
+    border-top-left-radius: 15px 225px !important;
+    border-top-right-radius: 255px 15px !important;
+    border-bottom-right-radius: 225px 15px !important;
+    border-bottom-left-radius: 15px 255px !important;
 }
 </style>
